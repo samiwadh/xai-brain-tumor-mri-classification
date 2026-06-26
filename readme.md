@@ -77,3 +77,64 @@ NeuroScanAI/
 ├── requirements.txt
 
 └── README.md
+
+
+---
+
+## Methodology
+
+**Data Preprocessing**
+- Image resizing to 224×224 (EfficientNetB0 input size)
+- Normalization (pixel rescaling)
+- Data augmentation (rotation, zoom, horizontal flip) on training data only
+- Train/validation split with no leakage into the test set
+
+**Transfer Learning Model**
+- EfficientNetB0 pretrained on ImageNet
+- Frozen feature extractor
+- Custom classification head: GlobalAveragePooling → Dropout → Dense(128, ReLU) → Dense(4, Softmax)
+- EarlyStopping and ReduceLROnPlateau to prevent overfitting
+
+**Explainability**
+- Grad-CAM (Gradient-weighted Class Activation Mapping) applied to the model's final convolutional layer
+- Heatmaps overlaid on original MRI scans to show prediction-driving regions
+- Misclassified samples specifically reviewed for explainability patterns
+
+---
+
+## Technologies Used
+Python, TensorFlow, Keras, NumPy, Matplotlib, Scikit-learn, OpenCV
+
+---
+
+## Evaluation Metrics
+Accuracy, Precision, Recall, F1-Score, Confusion Matrix, Classification Report
+
+---
+
+## Results
+| Model          | Accuracy |
+|----------------|----------|
+| EfficientNetB0 | TBD      |
+
+*(Results filled in after training — target: outperform a naive baseline while maintaining clinically-sound Grad-CAM focus on tumor regions.)*
+
+---
+
+## Future Work
+- MRI tumor segmentation (U-Net)
+- Vision Transformer comparison
+- Domain-shift testing across different MRI sources
+- Clinical validation with radiologist review
+
+---
+
+## Author
+**Sami Wadho**
+MSc Data Science, University of Milano-Bicocca
+Interests: Medical AI, Deep Learning, Computer Vision, Explainable AI
+
+---
+
+## License
+Developed for educational and research purposes

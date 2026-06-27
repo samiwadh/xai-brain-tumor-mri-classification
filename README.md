@@ -88,7 +88,7 @@ Glioma recall (0.75) is the weakest per-class metric; the dominant error is glio
 
 ---
 ## Author
-**Sami Wadho**
+**Abdul Sami **
 MSc Data Science, University of Milano-Bicocca
 Interests: Medical AI, Deep Learning, Computer Vision, Explainable AI
 
